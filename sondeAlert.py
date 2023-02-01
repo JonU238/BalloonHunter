@@ -8,7 +8,7 @@ import maper
 B=43.084259 #YOUR LAT
 A=-77.674322 #YOUR LONG
 print("Sonde Alert online")
-print("Current location: "+B+" ,"+A)
+print("Current location: "+str(B)+" ,"+str(A))
 '''
 def calc_angle(a,b,c,d):
     angle =  (((d-b)/(abs(d-b)))*(180*((math.acos((((math.sqrt((d-b)**2)+(c-a)**2))**2+(10**2)-(math.sqrt((d-b)**2+(c-a+10)**2))**2)/(20*((math.sqrt((d-b)**2)+(c-a)**2)))))/math.pi)))
