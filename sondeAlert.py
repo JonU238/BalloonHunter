@@ -7,6 +7,8 @@ import maper
 
 B=43.084259 #YOUR LAT
 A=-77.674322 #YOUR LONG
+print("Sonde Alert online")
+print("Current location: "+B+" ,"+A)
 '''
 def calc_angle(a,b,c,d):
     angle =  (((d-b)/(abs(d-b)))*(180*((math.acos((((math.sqrt((d-b)**2)+(c-a)**2))**2+(10**2)-(math.sqrt((d-b)**2+(c-a+10)**2))**2)/(20*((math.sqrt((d-b)**2)+(c-a)**2)))))/math.pi)))
@@ -25,7 +27,7 @@ def on_message(message):
     balloon_type = ((message["type"]))
     balloon_alt = message["alt"]
     dist = calc_distance(A,B,C,D)
-    if(dist<1000 and int(balloon_alt)<50000):
+    if(dist<100 and int(balloon_alt)<5000):
         print(round(dist))
         timeToBalloon = maper.time_to_destination(str(B)+","+str(A), str(D)+","+str(C))
         Notification.text_me("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))

@@ -6,7 +6,7 @@ import requests
 from requests.models import Response
 f = open('pass.json')
 important = json.load(f)
-
+print("Notification online")
 def text_me(msg):
     client = Client(important["account_sid"], important["auth_token"])
     message = client.messages.create(body =  msg, #Message you send
