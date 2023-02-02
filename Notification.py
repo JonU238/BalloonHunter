@@ -4,8 +4,8 @@ from requests.api import request
 import json
 import requests
 from requests.models import Response
-f = open('pass.json')
-important = json.load(f)
+important = open('pass.json')
+important = json.load(important)
 print("Notification online")
 def text_me(msg):
     client = Client(important["account_sid"], important["auth_token"])
