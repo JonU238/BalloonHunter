@@ -12,6 +12,6 @@ def text_me(msg):
     message = client.messages.create(body =  msg, #Message you send
                         from_ = important["from#"],#Provided phone number
                         to =    important["to#"])#Your phone number
-    print(message.sid)
+    print("TXT msg sid" + message.sid)
 
 

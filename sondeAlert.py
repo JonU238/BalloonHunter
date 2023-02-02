@@ -3,6 +3,7 @@ import math
 import json
 import Notification
 import maper
+import landingGuess
 #import numpy as np
 
 B=43.084259 #YOUR LAT
@@ -23,13 +24,17 @@ def calc_distance(a,b,c,d):
 def on_message(message):
     C = float((message["position"]).split(",")[1])
     D = float((message["position"]).split(",")[0])
-    balloon_frequ = ((message["frequency"]))
-    balloon_type = ((message["type"]))
+    
     balloon_alt = message["alt"]
     dist = calc_distance(A,B,C,D)
     if(dist<100 and int(balloon_alt)<5000):
+        print(message)
+        balloon_frequ = ((message["frequency"]))
+        balloon_type = ((message["type"]))
         print(round(dist))
-        timeToBalloon = maper.time_to_destination(str(B)+","+str(A), str(D)+","+str(C))
+        guess_landing = landingGuess.glanding(message)
+        print(guess_landing)
+        timeToBalloon = maper.time_to_destination(str(B)+","+str(A), str(guess_landing[0])+","+str(guess_landing[1]))
         Notification.text_me("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))
         exit()
         

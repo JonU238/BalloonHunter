@@ -11,5 +11,10 @@ def time_to_destination(loc1, loc2):
     directions_result = gmaps.directions(loc1,loc2,
                                         mode="driving",
                                         departure_time=now)
-    return(directions_result[0]["legs"][0]["duration_in_traffic"]["text"])
+    print("Result from maper")
+    print(directions_result)
+    try:
+        return(directions_result[0]["legs"][0]["duration_in_traffic"]["text"])
+    except:
+        return("Unknown")
 #print(time_to_destination("Rochester Institute of Technology","1389 Spang St extention Roaring spring PA"))
