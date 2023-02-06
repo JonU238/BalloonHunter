@@ -7,7 +7,8 @@ Required python packages:
 - googlemaps
 - twilio
 
-### Future goals:
-- Have sonde alert msg you if the ballon will land in your area
-- Add other msg services that dont require payed twilio account
-- Have eta given be to the landing site instead of the balloons curent location
+### Goals:
+- Have program not just exit after sending, have it wait for the next time a balloon may be over head
+- ~~Have sonde alert msg you if the balloon will land in your area~~
+- ~~Add other msg services that dont require payed twilio account~~
+- ~~Have eta given be to the landing site instead of the balloons curent location~~

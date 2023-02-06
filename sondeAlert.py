@@ -46,9 +46,17 @@ def on_message(message):
         guess_landing = landingGuess.glanding(message)
         print(guess_landing)
         timeToBalloon = maper.time_to_destination(str(B)+","+str(A), str(guess_landing[0])+","+str(guess_landing[1]))
-        Notification.text_me("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))
+
+        if(options["msg_type"] == "txtmsg"):
+            #for texting the user
+            Notification.text_me("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))
+        elif(options["msg_type"] == "email"):
+            #For emailing the user
+            Notification.email_me("Balloon alert","There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))
+        else:
+            #If some setting is wrong it will default to print
+            print("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))
         exit()
-        
     else:
         pass
 test = sondehub.Stream(on_message=on_message)
