@@ -31,16 +31,18 @@ if("y" == input("Do you want to updates passwords file?(If this is your first ti
         auth_token = "na"
         numFrom ="na"
         numTo = "na"
-
-if("y" == input("Do you want to fill out the email information? [y/n]: ")):
-    email_sender = input("What gmail will be sending the email (example@example.net): ")
-    email_to = input("What email are you sending the notification to?: ")
-    email_app_password = input("What is your google application password: ")
+    
+    if("y" == input("Do you want to fill out the email information? [y/n]: ")):
+        email_sender = input("What gmail will be sending the email (example@example.net): ")
+        email_to = input("What email are you sending the notification to?: ")
+        email_app_password = input("What is your google application password: ")
+    else:
+        email_sender = "na"
+        email_to = "na"
+        email_app_password = "na"
+    googlekey = input("What is your google maps api key(Put na if you dont have one): ")
+    secure = {"googleKey":googlekey,"account_sid":account_ssid,"auth_token":auth_token,"from#":numFrom,"to#":numTo,"email_sender":email_sender,"email_to":email_to,"email_app_password":email_app_password}
+    with open("pass2.json", "w") as outfile:
+            json.dump(secure, outfile)
 else:
-    email_sender = "na"
-    email_to = "na"
-    email_app_password = "na"
-googlekey = input("What is your google maps api key(Put na if you dont have one): ")
-secure = {"googleKey":googlekey,"account_sid":account_ssid,"auth_token":auth_token,"from#":numFrom,"to#":numTo,"email_sender":email_sender,"email_to":email_to,"email_app_password":email_app_password}
-with open("pass2.json", "w") as outfile:
-        json.dump(secure, outfile)
+    print("ok cool beans bud")
