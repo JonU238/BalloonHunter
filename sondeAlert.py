@@ -49,13 +49,13 @@ def on_message(message):
 
         if(options["msg_type"] == "txtmsg"):
             #for texting the user
-            Notification.text_me("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))
+            Notification.text_me("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon)+" Predicted landing: "+str(guess_landing[1])+" ,"+str(guess_landing[0]))
         elif(options["msg_type"] == "email"):
             #For emailing the user
-            Notification.email_me("Balloon alert","There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))
+            Notification.email_me("Balloon alert","There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon)+" Predicted landing: "+str(guess_landing[1])+" ,"+str(guess_landing[0]))
         else:
             #If some setting is wrong it will default to print
-            print("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon))
+            print("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon)+" Predicted landing: "+str(guess_landing[1])+" ,"+str(guess_landing[0]))
         exit()
     else:
         pass
