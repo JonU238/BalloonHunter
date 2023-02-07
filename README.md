@@ -11,6 +11,7 @@ Required python packages:
 
 ## Goals:
 - Have program not just exit after sending, have it wait for the next time a balloon may be over head.
+- Have it send a photo of the sonde hub map along with the email/txtmsg
 ## Compleated goals:
 - ~~Have sonde alert msg you if the balloon will land in your area~~
 - ~~Add other msg services that dont require payed twilio account~~
@@ -18,7 +19,7 @@ Required python packages:
 ## Instalation
 TLDR: clone the repo and run the installer, then when your confused come back here and read the full instructions
 
-Sonde alert can either email or text you notification. If you want to use text you need a twilio account, a free trial/ free teir acount will work. I suggest everyone just use email and have the notification turned on on there phone.
+Sonde alert can either email or text you notification. To use it simply run the sondeAlert.py script on a server and have it restart the script at 10 utc every day.(this will be phased out so its always running soon)
 
 Program settings:
 - Distance
