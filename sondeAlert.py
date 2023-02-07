@@ -4,11 +4,12 @@ import json
 import Notification
 import maper
 import landingGuess
+import time
+import sys
 #import numpy as np
 #Loads in the options file
 options = open('options.json')
 options = json.load(options)
-
 #Sets the lat and lon from options
 B = options["home_lat"]
 A = options["home_lon"]
@@ -40,13 +41,18 @@ def on_message(message):
 
     if(dist<options["distance"] and int(balloon_alt)<options["note_alt"]):
         print(message)
-        balloon_frequ = ((message["frequency"]))
-        balloon_type = ((message["type"]))
+        try:
+            balloon_frequ = ((message["frequency"]))
+        except:
+            balloon_frequ = "Unknown"
+        try:
+            balloon_type = ((message["type"]))
+        except:
+            balloon_type = "Unknown"
         print(round(dist))
         guess_landing = landingGuess.glanding(message)
         print(guess_landing)
         timeToBalloon = maper.time_to_destination(str(B)+","+str(A), str(guess_landing[0])+","+str(guess_landing[1]))
-
         if(options["msg_type"] == "txtmsg"):
             #for texting the user
             Notification.text_me("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon)+" Predicted landing: "+str(guess_landing[1])+" ,"+str(guess_landing[0]))
@@ -56,9 +62,13 @@ def on_message(message):
         else:
             #If some setting is wrong it will default to print
             print("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon)+" Predicted landing: "+str(guess_landing[1])+" ,"+str(guess_landing[0]))
-        exit()
+        sys.exit("Finished!")
     else:
         pass
 test = sondehub.Stream(on_message=on_message)
-while 1:
-    pass
+animation = "|/-\\"
+idx = 0
+while(1):
+    print(animation[idx % len(animation)], end="\r")
+    idx += 1
+    time.sleep(0.2)
