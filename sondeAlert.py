@@ -62,7 +62,9 @@ def on_message(message):
         else:
             #If some setting is wrong it will default to print
             print("There is a balloon("+balloon_type+") @ "+str(D)+","+str(C)+" At alt:"+str(balloon_alt)+". On:"+str(balloon_frequ)+"MHZ. ETA:"+str(timeToBalloon)+" Predicted landing: "+str(guess_landing[1])+" ,"+str(guess_landing[0]))
-        sys.exit("Finished!")
+        print("Sent msg\nsleeping till next balloon window")
+        time.sleep(36000)
+        
     else:
         pass
 test = sondehub.Stream(on_message=on_message)
